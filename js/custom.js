@@ -14,6 +14,8 @@ $(window).on('load', function () {
         $('.filters_menu li').removeClass('active');
         $(this).addClass('active');
 
+        console.log("this");
+
         var data = $(this).attr('data-filter');
         $grid.isotope({
             filter: data
@@ -32,9 +34,10 @@ $(window).on('load', function () {
 // nice select
 $(document).ready(function() {
     $('select').niceSelect();
+
   });
 
-/** google_map js **/
+/** google_map js **
 function myMap() {
     var mapProp = {
         center: new google.maps.LatLng(40.712775, -74.005973),
@@ -42,7 +45,7 @@ function myMap() {
     };
     var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 }
-
+**/
 // client section owl carousel
 $(".client_owl-carousel").owlCarousel({
     loop: true,
