@@ -10,17 +10,61 @@ getYear();
 
 // isotope js
 $(window).on('load', function () {
+    
+});
+
+// nice select
+$(document).ready(function() {
+
+    
+    showPageSection("Home");
+
+    var path = window.location.href;
+
+    console.log(path);
+
+    if (path.indexOf("about") > -1) {
+        showPageSection("About");
+    }
+
+    if (path.indexOf("membership") > -1) {
+        showPageSection("Membership");
+    }
+
+    if (path.indexOf("shop") > -1) {
+        showPageSection("Shop");
+    }
+
+
     $('.filters_menu li').click(function () {
         $('.filters_menu li').removeClass('active');
         $(this).addClass('active');
-
-        console.log("this");
 
         var data = $(this).attr('data-filter');
         $grid.isotope({
             filter: data
         })
     });
+
+    $('.nav-item').click(function () {
+        $('.nav-item').removeClass('active');
+        $(this).addClass('active');
+
+        var sectionId = $(this).children('.nav-link').text();
+
+        showPageSection(sectionId);
+
+        var data = $(this).attr('data-filter');
+        $grid.isotope({
+            filter: data
+        })
+    });
+
+    $('.navbar-brand').click(function () {
+        showPageSection("Home");
+    });
+
+   
 
     var $grid = $(".grid").isotope({
         itemSelector: ".all",
@@ -29,13 +73,29 @@ $(window).on('load', function () {
             columnWidth: ".all"
         }
     })
-});
 
-// nice select
-$(document).ready(function() {
-    $('select').niceSelect();
+
 
   });
+
+
+  function showPageSection(sectionId){
+
+    $('#Home').hide();
+    $('#About').hide();
+    $('#Membership').hide();
+    $('#Shop').hide();
+    $('.nav-item').removeClass('active');
+
+    var div = $('#'+sectionId);
+    var li = $('#nav'+sectionId);
+
+    div.show();
+    li.addClass("active");
+
+  }
+
+
 
 /** google_map js **
 function myMap() {
@@ -63,7 +123,7 @@ $(".client_owl-carousel").owlCarousel({
         0: {
             items: 1
         },
-        768: {
+        1000: {
             items: 2
         },
         1000: {
