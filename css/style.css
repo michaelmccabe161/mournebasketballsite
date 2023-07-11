@@ -1048,4 +1048,16 @@ a:focus {
 .footer_section .footer-info p a {
   color: inherit;
 }
+
+.my-checkbox{
+height: 50px;
+width:50px;
+}
+
+.my-checkbox-label{
+  padding: 15px;
+  padding-left: 50px;
+}
+
+
 /*# sourceMappingURL=style.css.map */

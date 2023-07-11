@@ -1,27 +1,9 @@
-// to get current year
-function getYear() {
-    var currentDate = new Date();
-    var currentYear = currentDate.getFullYear();
-    document.querySelector("#displayYear").innerHTML = currentYear;
-}
-
-getYear();
-
-
-// isotope js
-$(window).on('load', function () {
-    
-});
-
-// nice select
 $(document).ready(function() {
 
-    
+    getYear();
     showPageSection("Home");
 
     var path = window.location.href;
-
-    console.log(path);
 
     if (path.indexOf("about") > -1) {
         showPageSection("About");
@@ -35,6 +17,23 @@ $(document).ready(function() {
         showPageSection("Shop");
     }
 
+    $("#player_submission_form").submit(function(e) {
+        e.preventDefault();
+    });
+
+    
+    $('#player_form_register_btn').click(function () {
+        getAllPlayers();
+    
+        var jsonFormData = $("#player_submission_form").serializeArray();
+        
+        console.log(jsonFormData);
+
+    });
+
+    $('#player_submission_form').submit(function() {
+
+      });
 
     $('.filters_menu li').click(function () {
         $('.filters_menu li').removeClass('active');
@@ -79,7 +78,7 @@ $(document).ready(function() {
   });
 
 
-  function showPageSection(sectionId){
+function showPageSection(sectionId){
 
     $('#Home').hide();
     $('#About').hide();
@@ -93,8 +92,14 @@ $(document).ready(function() {
     div.show();
     li.addClass("active");
 
-  }
+}
 
+  // to get current year
+function getYear() {
+    var currentDate = new Date();
+    var currentYear = currentDate.getFullYear();
+    document.querySelector("#displayYear").innerHTML = currentYear;
+}
 
 
 /** google_map js **
@@ -131,3 +136,44 @@ $(".client_owl-carousel").owlCarousel({
         }
     }
 });
+
+function getAllPlayers(){
+    console.log("getting all players");
+
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://mournebasketball-71d9.restdb.io/rest/players",
+        "method": "GET",
+        "headers": {
+          "content-type": "application/json",
+          "x-apikey": "64adc79f86d8c54794ed9074",
+          "cache-control": "no-cache"
+        }
+      }
+      
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+      });
+}
+
+function postPlayer(){
+    var jsondata = {"field1": "xyz","field2": "abc"};
+    var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://mournebasketball-71d9.restdb.io/rest/players",
+    "method": "POST",
+    "headers": {
+        "content-type": "application/json",
+        "x-apikey": "<your CORS apikey here>",
+        "cache-control": "no-cache"
+    },
+    "processData": false,
+    "data": JSON.stringify(jsondata)
+    }
+
+    $.ajax(settings).done(function (response) {
+    console.log(response);
+    });
+}

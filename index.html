@@ -1037,46 +1037,61 @@ I have no idea what to put here right now. It's too late in the evening to think
       <div class="row">
         <div class="col-md-6">
           <div class="form_container">
-            <form action="">
+            <form action="" id="player_submission_form">
               <div>
                 <label>First name</label>
-                <input type="text" class="form-control"/>
+                <input name="firstName" type="text" class="form-control" id="player_form_first_name"/>
               </div>
               <div>
                 <label>Last name</label>
-                <input type="text" class="form-control" />
+                <input name="surname" type="text" class="form-control" id="player_form_surname" />
               </div>
               <div>
                 <label>Date of Birth</label>
-                <input type="date" class="form-control">
+                <input name="dob"type="date" class="form-control" id="player_form_dob">
               </div>
               <div>
-                <label>Contact Number</label>
-                <input type="tel" class="form-control" />
+                <label>Parents Name</label>
+                <input name="emergencyName"type="tel" class="form-control" id="player_form_emergency_name" />
               </div>
               <div>
-                <label>Email Address</label>
-                <input type="email" class="form-control"/>
+                <label>Parents Contact Number</label>
+                <input name="emergencyPhone"type="tel" class="form-control"id="player_form_emergency_phone" />
               </div>
               <div>
-                <label>Are you registering as a Player or Parent?</label>
-                <select class="form-control nice-select wide">
+                <label>Parents Email Address</label>
+                <input name="email"type="email" class="form-control"id="player_form_email"/>
+              </div>
+              <div>
+                <label>School</label>
+                <input name="school"type="text" class="form-control"id="player_form_school"/>
+              </div>
+              <div>
+                <label>Which location are you registering for?</label>
+                <select name="location"class="form-control nice-select wide" id="player_form_location">
                     <option value="Please select" disabled selected>
                     </option>
-                  <option value="Player">
-                    Player
+                  <option value="Castlewellan">
+                    St. Malachy's, Castlewellan
                   </option>
-                  <option value="Parent">
-                    Parent
+                  <option value="Newcastle">
+                    Shimna Integrated College, Newcastle
                   </option>
                 </select>
               </div>
               <div>
                 <label>Any medical conditions we should be aware of?</label>
-                <input type="textarea" class="form-control" />
+                <input name="notes"type="textarea" class="form-control" id="player_form_notes"/>
               </div>
+              <div class="form-check">
+                <input name="socialCheckbox" class="form-check-input my-checkbox" type="checkbox" value="" id="player_form_social_checkbox">
+                <label class="form-check-label my-checkbox-label" for="player_form_social_checkbox">
+                  Please confirm your child can appear on our Social Media.
+                </label>
+              </div>
+              <br><br>
               <div class="btn_box">
-                <button>
+                <button id="player_form_register_btn">
                   Register
                 </button>
               </div>
